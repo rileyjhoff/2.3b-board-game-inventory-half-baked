@@ -13,7 +13,7 @@ export default function CreatePage() {
   // minPlayers;
   // maxPlayers;
   const [title, setTitle] = useState();
-  const [genre, setGenre] = useState();
+  const [genre, setGenre] = useState('Tile-laying');
   const [designer, setDesigner] = useState();
   const [description, setDescription] = useState();
   const [minPlayers, setMinPlayers] = useState();
