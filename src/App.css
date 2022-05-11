@@ -45,7 +45,7 @@ a {
   padding: 50px;
 }
 
-.auth, .list, .detail, .create {
+.auth, .list, .detail, .create, .update {
   height: 100%;
   display: flex;
   flex-direction: column;
