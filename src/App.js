@@ -32,16 +32,21 @@ export default function App() {
         <main>
           <Switch>
             <Route exact path="/">
-              {/* if there is a user, redirect to the board games list. Otherwise, render the auth page. Note that the AuthPage will need a function called setUser that can set the user state in App.js */}
+              {/* if there is a user, redirect to the board games list. Otherwise, render the auth page. 
+              Note that the AuthPage will need a function called setUser that can set the user state in App.js */}
+              {user ? <Redirect to="/board-games" /> : <AuthPage setUser={setUser} />}
             </Route>
             <Route exact path="/board-games">
               {/* if there is a user, render the board games list. Otherwise, redirect to the home route/auth page */}
+              {user ? <ListPage /> : <Redirect to="/" />}
             </Route>
             <Route exact path="/board-games/:id">
               {/* if there is a user, render the detail page. Otherwise, redirect to the home route/auth page */}
+              {user ? <DetailPage /> : <Redirect to="/" />}
             </Route>
             <Route exact path="/create">
               {/* if there is a user, render the create page. Otherwise, redirect to the home route/auth page */}
+              {user ? <CreatePage /> : <Redirect to="/" />}
             </Route>
           </Switch>
         </main>
