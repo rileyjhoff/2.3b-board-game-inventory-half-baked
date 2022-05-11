@@ -51,11 +51,34 @@ export default function AuthPage({ setUser }) {
             onChange={(e) => setFormPassword(e.target.value)}
           />
         </label>
+        {/* on clicking sign in, sign the user in using the function defined above */}
         <button onClick={handleSignIn}>Sign In</button>
+      </form>
+      <form>
+        <label>
+          Email
+          {/* on change, update the form state for email */}
+          <input
+            required
+            type="email"
+            name="email"
+            value={formEmail}
+            onChange={(e) => setFormEmail(e.target.value)}
+          />
+        </label>
+        <label>
+          Password
+          {/* on change, update the form state for password */}
+          <input
+            required
+            type="password"
+            name="password"
+            value={formPassword}
+            onChange={(e) => setFormPassword(e.target.value)}
+          />
+        </label>
         {/* on clicking sign up, sign the user up using the function defined above */}
-        <button type="button" onClick={handleSignUp}>
-          Sign Up
-        </button>
+        <button onClick={handleSignUp}>Sign Up</button>
       </form>
     </div>
   );

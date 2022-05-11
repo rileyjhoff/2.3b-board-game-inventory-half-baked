@@ -5,33 +5,38 @@ export default function CreatePage() {
   // you'll need the history hook from react-router-dom to do your redirecting in the handleSubmit
 
   // here's the state you'll need:
-    // title;
-    // genre;
-    // designer;
-    // description;
-    // minPlayers;
-    // maxPlayers;
+  // title;
+  // genre;
+  // designer;
+  // description;
+  // minPlayers;
+  // maxPlayers;
+  const [title, setTitle] = useState();
+  const [genre, setGenre] = useState();
+  const [designer, setDesigner] = useState();
+  const [description, setDescription] = useState();
+  const [minPlayers, setMinPlayers] = useState();
+  const [maxPlayers, setMaxPlayers] = useState();
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     // create a game
 
     // use history.push to send the user to the list page
   }
 
   return (
-    <div className='create'>
+    <div className="create">
       {/* on submit, call your handleSubmit function */}
       <form>
         <h2>Add board game</h2>
         <label>
-            Title
+          Title
           {/* on change, set the title in state */}
-          <input required name='title' />
+          <input required name="title" />
         </label>
         <label>
-            Genre
+          Genre
           {/* on change, set the genre in state */}
           <select required>
             <option>Tile-laying</option>
@@ -44,24 +49,24 @@ export default function CreatePage() {
           </select>
         </label>
         <label>
-            Designer
+          Designer
           {/* on change, set the designer in state */}
-          <input required name='designer' />
+          <input required name="designer" />
         </label>
         <label>
-            Min Players
+          Min Players
           {/* on change, set the min players in state */}
-          <input required name='min_players' />
+          <input required name="min_players" />
         </label>
         <label>
-            Max Players
+          Max Players
           {/* on change, set the max players in state */}
-          <input required name='max_players' />
+          <input required name="max_players" />
         </label>
         <label>
-            Description
+          Description
           {/* on change, set the description in state */}
-          <textarea required name='max_players' />
+          <textarea required name="max_players" />
         </label>
         <button>Create game</button>
       </form>
