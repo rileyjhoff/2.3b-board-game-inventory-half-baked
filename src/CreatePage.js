@@ -22,7 +22,14 @@ export default function CreatePage() {
   async function handleSubmit(e) {
     e.preventDefault();
     // create a game
-    const game = { title, genre, designer, min_players: minPlayers, max_players: maxPlayers };
+    const game = {
+      title,
+      genre,
+      designer,
+      description,
+      min_players: minPlayers,
+      max_players: maxPlayers,
+    };
     await createGame(game);
     // use history.push to send the user to the list page
     history.push('/board-games');
