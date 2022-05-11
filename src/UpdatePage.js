@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useRouteMatch } from 'react-router-dom';
-import { getGameById } from './services/fetch-utils';
+import { getGameById, updateGame } from './services/fetch-utils';
 
 export default function UpdatePage() {
   const match = useRouteMatch();
+  const history = useHistory();
   const [game, setGame] = useState({});
   // on mount, fetch and set in state the correct board game for this id (the id can be found in match.params using the correct react-router hook)
   useEffect(() => {
@@ -12,7 +14,13 @@ export default function UpdatePage() {
       setGame(thisGame);
     }
     load();
-  }, []);
+  }, [match.params.id]);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    await updateGame(game);
+    history.push('/board-games');
+  }
 
   return (
     <div className="detail">
