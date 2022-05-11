@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getUser } from './services/fetch-utils';
 import { BrowserRouter as Router, Switch, NavLink, Route, Redirect } from 'react-router-dom';
 import AuthPage from './AuthPage';
-import DetailPage from './DetailPage';
+import UpdatePage from './UpdatePage';
 import ListPage from './ListPage';
 import CreatePage from './CreatePage';
 
@@ -50,8 +50,8 @@ export default function App() {
               {user ? <ListPage /> : <Redirect to="/" />}
             </Route>
             <Route exact path="/board-games/:id">
-              {/* if there is a user, render the detail page. Otherwise, redirect to the home route/auth page */}
-              {user ? <DetailPage /> : <Redirect to="/" />}
+              {/* if there is a user, render the update page. Otherwise, redirect to the home route/auth page */}
+              {user ? <UpdatePage /> : <Redirect to="/" />}
             </Route>
             <Route exact path="/create">
               {/* if there is a user, render the create page. Otherwise, redirect to the home route/auth page */}
