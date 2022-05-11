@@ -29,7 +29,7 @@ export default function AuthPage({ setUser }) {
       </h1>
       {/* on submit, sign the user in using the function defined above */}
       <form>
-        <label>
+        <label onSubmit={handleSignIn}>
           Email
           {/* on change, update the form state for email */}
           <input
@@ -54,7 +54,7 @@ export default function AuthPage({ setUser }) {
         {/* on clicking sign in, sign the user in using the function defined above */}
         <button onClick={handleSignIn}>Sign In</button>
       </form>
-      <form>
+      <form onSubmit={handleSignUp}>
         <label>
           Email
           {/* on change, update the form state for email */}
