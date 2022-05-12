@@ -1,39 +1,54 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { createGame } from './services/fetch-utils';
 
 export default function CreatePage() {
   // you'll need the history hook from react-router-dom to do your redirecting in the handleSubmit
-
+  const history = useHistory();
   // here's the state you'll need:
-    // title;
-    // genre;
-    // designer;
-    // description;
-    // minPlayers;
-    // maxPlayers;
+  // title;
+  // genre;
+  // designer;
+  // description;
+  // minPlayers;
+  // maxPlayers;
+  const [title, setTitle] = useState();
+  const [genre, setGenre] = useState('Tile-laying');
+  const [designer, setDesigner] = useState();
+  const [description, setDescription] = useState();
+  const [minPlayers, setMinPlayers] = useState();
+  const [maxPlayers, setMaxPlayers] = useState();
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     // create a game
-
+    const game = {
+      title,
+      genre,
+      designer,
+      description,
+      min_players: minPlayers,
+      max_players: maxPlayers,
+    };
+    await createGame(game);
     // use history.push to send the user to the list page
+    history.push('/board-games');
   }
 
   return (
-    <div className='create'>
+    <div className="create">
       {/* on submit, call your handleSubmit function */}
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2>Add board game</h2>
         <label>
-            Title
+          Title
           {/* on change, set the title in state */}
-          <input required name='title' />
+          <input required name="title" value={title} onChange={(e) => setTitle(e.target.value)} />
         </label>
         <label>
-            Genre
+          Genre
           {/* on change, set the genre in state */}
-          <select required>
+          <select required value={genre} onChange={(e) => setGenre(e.target.value)}>
             <option>Tile-laying</option>
             <option>Economic</option>
             <option>War</option>
@@ -44,24 +59,44 @@ export default function CreatePage() {
           </select>
         </label>
         <label>
-            Designer
+          Designer
           {/* on change, set the designer in state */}
-          <input required name='designer' />
+          <input
+            required
+            name="designer"
+            value={designer}
+            onChange={(e) => setDesigner(e.target.value)}
+          />
         </label>
         <label>
-            Min Players
+          Min Players
           {/* on change, set the min players in state */}
-          <input required name='min_players' />
+          <input
+            required
+            name="min_players"
+            value={minPlayers}
+            onChange={(e) => setMinPlayers(e.target.value)}
+          />
         </label>
         <label>
-            Max Players
+          Max Players
           {/* on change, set the max players in state */}
-          <input required name='max_players' />
+          <input
+            required
+            name="max_players"
+            value={maxPlayers}
+            onChange={(e) => setMaxPlayers(e.target.value)}
+          />
         </label>
         <label>
-            Description
+          Description
           {/* on change, set the description in state */}
-          <textarea required name='max_players' />
+          <textarea
+            required
+            name="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
         </label>
         <button>Create game</button>
       </form>
