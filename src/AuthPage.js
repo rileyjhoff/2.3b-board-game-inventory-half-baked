@@ -3,13 +3,15 @@ import { signIn, signUp } from './services/fetch-utils.js';
 
 export default function AuthPage({ setUser }) {
   // you'll need to track the form state of the email and password
-  const [formEmail, setFormEmail] = useState();
-  const [formPassword, setFormPassword] = useState();
+  const [formEmailSignIn, setFormEmailSignIn] = useState();
+  const [formPasswordSignIn, setFormPasswordSignIn] = useState();
+  const [formEmailSignUp, setFormEmailSignUp] = useState();
+  const [formPasswordSignUp, setFormPasswordSignUp] = useState();
 
   async function handleSignIn(e) {
     e.preventDefault();
     // sign the user in using the form state
-    const currUser = await signIn(formEmail, formPassword);
+    const currUser = await signIn(formEmailSignIn, formPasswordSignIn);
     // set the user in App.js state using the correct prop callback. If you did the ternary right in App.js, this should automatically redirect the user to the board game list
     setUser(currUser);
   }
@@ -17,7 +19,7 @@ export default function AuthPage({ setUser }) {
   async function handleSignUp(e) {
     e.preventDefault();
     // sign the user up using the form state
-    const currUser = await signUp(formEmail, formPassword);
+    const currUser = await signUp(formEmailSignUp, formPasswordSignUp);
     // set the user in App.js state using the correct prop callback. If you did the ternary right in App.js, this should automatically redirect the user to the board game list
     setUser(currUser);
   }
@@ -36,8 +38,8 @@ export default function AuthPage({ setUser }) {
             required
             type="email"
             name="email"
-            value={formEmail}
-            onChange={(e) => setFormEmail(e.target.value)}
+            value={formEmailSignIn}
+            onChange={(e) => setFormEmailSignIn(e.target.value)}
           />
         </label>
         <label>
@@ -47,8 +49,8 @@ export default function AuthPage({ setUser }) {
             required
             type="password"
             name="password"
-            value={formPassword}
-            onChange={(e) => setFormPassword(e.target.value)}
+            value={formPasswordSignIn}
+            onChange={(e) => setFormPasswordSignIn(e.target.value)}
           />
         </label>
         {/* on clicking sign in, sign the user in using the function defined above */}
@@ -62,8 +64,8 @@ export default function AuthPage({ setUser }) {
             required
             type="email"
             name="email"
-            value={formEmail}
-            onChange={(e) => setFormEmail(e.target.value)}
+            value={formEmailSignUp}
+            onChange={(e) => setFormEmailSignUp(e.target.value)}
           />
         </label>
         <label>
@@ -73,8 +75,8 @@ export default function AuthPage({ setUser }) {
             required
             type="password"
             name="password"
-            value={formPassword}
-            onChange={(e) => setFormPassword(e.target.value)}
+            value={formPasswordSignUp}
+            onChange={(e) => setFormPasswordSignUp(e.target.value)}
           />
         </label>
         {/* on clicking sign up, sign the user up using the function defined above */}
