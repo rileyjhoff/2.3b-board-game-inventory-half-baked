@@ -30,8 +30,8 @@ export default function AuthPage({ setUser }) {
         <em>Boardzo</em>
       </h1>
       {/* on submit, sign the user in using the function defined above */}
-      <form>
-        <label onSubmit={handleSignIn}>
+      <form onSubmit={handleSignIn}>
+        <label>
           Email
           {/* on change, update the form state for email */}
           <input
